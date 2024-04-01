@@ -6,6 +6,14 @@ This is a beta version and may change as needed in the future.
 
 Please run **ur_viewmodel.py** to control a physical UR5 robot.if you want to run it without a physical robot, change qmlRobotGui/main.qml SwipeView interactive:false to true.
 
+Please refer to the following commands to configure the QmlVTK environment in Anaconda:
+```
+conda create --name QmlVtk python=3.7
+conda activate QmlVtk
+conda install -c conda-forge pyside2=5.13.2 # Linux
+pip install PySide2==5.13.2 # Windows
+pip install vtk==8.1.2 # check compatibility section
+```
  - When using QmlApplicationEngine() to load qml-vtk window, in the unlikely event, you will encounter the following problems: the QML window is stuck.
  - Please check if you: import pyside2, and use QmlApplicationEngine().load to load only one qml-vtk window (such as main.qml in here containing custom qmlRegisterType "import QmlVTK 1.0") .If you have to do this, plus self.createRenderer () to __ init__ function, fboitem class.Then it works but an error window, vtkoutputwindow, will be displayed.Then try to close the vtkoutputwindow (maybe call the Win32 API findwindow?)
  - Recommended solutions:
